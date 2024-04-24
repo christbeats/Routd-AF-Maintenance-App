@@ -1,56 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Employee</h1>
+@extends('layout')
+@section('main')
     <div>
-        @if(session()->has('success') )
-            <div>
-                {{session('success')}}
-            </div>
-        @endif
-    </div>
-    <div>
-        <div>
-            <a href="{{route('employee.create')}}">Creer un employer</a>
+        <div class="d-flex align-center justify-content-between">
+            <h1>Employee list</h1>
+            <a href="{{route('employee.create')}}" class="btn btn-info mb-2">Creer un employer</a>
         </div>
-        <table border="1">
-            <tr>
-                <th>ID</th>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>Fonction</th>
-                <th>Telephone</th>
-                <th>Modifier</th>
-                <th>Supprimer</th>
-            </tr>
-            @foreach($employees as $employee)
-                <tr>
-                    <td>{{$employee->id}}</td>
-                    <td>{{$employee->name}}</td>
-                    <td>{{$employee->surname}}</td>
-                    <td>{{$employee->function}}</td>
-                    <td>{{$employee->phone}}</td>
-                    <td>
-                        <a href="{{route('employee.edit', ['employee' => $employee])}}">Edit</a>
-                    </td>
-                    <td>
-                        <form method="post" action="{{route('employee.delete', ['employee' => $employee])}}">
-                            @csrf
-                            @method('delete')
-                            <input type="submit" value="Delete"/>
-                        </form>
-                    </td>
+        <div>
+            @if(session()->has('success') )
+                <div>
+                    {{session('success')}}
+                </div>
+            @endif
+        </div>
+        <div class="table-responsive">
+
+            <table class="table table-hover table-striped tm-table-striped-even mt-3">
+                <tr class="tm-bg-gray">
+                    <th scope="col">ID</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prenom</th>
+                    <th scope="col">Fonction</th>
+                    <th scope="col">Telephone</th>
+                    <th scope="col">Actions</th>
                 </tr>
-            @endforeach
-        </table>
-        <div>
-            <a href="{{route('dashboard.index')}}">Retour dashboard</a>
+                @foreach($employees as $employee)
+                    <tr scope="row">
+                        <td>{{$employee->id}}</td>
+                        <td>{{$employee->name}}</td>
+                        <td>{{$employee->surname}}</td>
+                        <td>{{$employee->function}}</td>
+                        <td>{{$employee->phone}}</td>
+                        <td>
+                            <div class="row gap-1">
+                                <a class="btn btn-primary btn-sm mr-2" href="{{route('employee.edit', ['employee' => $employee])}}"><i class="fas fa-pencil-alt tm-edit-icon"></i></a>
+
+                                <form method="post" action="{{route('employee.delete', ['employee' => $employee])}}">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt tm-trash-icon"></i></button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                @endforeach
+            </table>
         </div>
     </div>
-</body>
-</html>
+@endsection

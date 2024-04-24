@@ -8,10 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Diagnostic extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'datedebut',
-        'commentaire',
-        'situation',
-        'file_path',
-    ];
+    protected $guarded = [];
 }

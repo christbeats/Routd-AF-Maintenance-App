@@ -30,12 +30,20 @@
             <input type="date" name="datedebut" placeholder="datedebut"/>
         </div>
         <div>
-            <label for="materiel">Materiel:</label>
-            <input type="text" name="materiel" placeholder="materiel"/>
+            <label for="material_id">Materiel:</label>
+            <select name="material_id" id="material_id">
+                @foreach($materials as $material)
+                    <option value="{{ $material->id }}">{{ $material->numParc }}</option>
+                @endforeach
+            </select>
         </div>
         <div>
-            <label for="chauffeur">Chauffeur:</label>
-            <input type="text" name="chauffeur" placeholder="chauffeur"/>
+            <label for="employee_id">Designation:</label>
+            <select name="employee_id" id="employee_id">
+                @foreach($employees as $employee)
+                    <option value="{{ $employee->id }}">{{ $employee->name }}</option>
+                @endforeach
+            </select>
         </div>
         <div>
             <label for="commentaire">Commentaire:</label>

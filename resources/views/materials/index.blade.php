@@ -22,7 +22,7 @@
             <tr>
                 <th>ID</th>
                 <th>Numero de Parc</th>
-                <th>Type</th>
+                <th>Category</th>
                 <th>Immatriculation</th>
                 <th>Date Aquisition</th>
                 <th>Etat</th>

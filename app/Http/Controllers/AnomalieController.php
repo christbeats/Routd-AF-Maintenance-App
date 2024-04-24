@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Anomalie;
 use App\Models\Employee;
+use App\Models\Material;
 
 class AnomalieController extends Controller
 {
@@ -15,9 +16,11 @@ class AnomalieController extends Controller
     }
 
     public function create(){
-        $anomalies = Anomalie::with('employee', 'material')->get();
+        $anomalies = Anomalie::with('employee')->get();
+        $materials = Material::doesntHave('anomalie')->get();
+        $employees = Employee::all();
 
-        return view('anomalies.create', compact('anomalies'));
+        return view('anomalies.create', compact('anomalies', 'employees', 'materials'));
     }
 
     public function store(Request $request){
@@ -25,7 +28,7 @@ class AnomalieController extends Controller
         $data = $request->validate([
             'name' => 'required',
             'datedebut' => 'required',
-            'materiel' => 'required',
+            // 'materiel' => 'required',
             // 'chauffeur' => 'required',
             'commentaire' => 'nullable',
             'file_path' => 'nullable',
@@ -42,18 +45,24 @@ class AnomalieController extends Controller
     }
 
     public function update(Anomalie $anomalie, Request $request){
-        $data = $request->validate([
-            'name' => 'required',
-            'datedebut' => 'required',
-            'materiel' => 'required',
-            // 'chauffeur' => 'required',
-            'commentaire' => 'nullable',
-            'file_path' => 'nullable',
-            'datefin' => 'nullable',
-        ]);
 
-        $anomalie->update($data);
-        return redirect(route('anomalie.index'))->with('success', 'Anomalie modifier avec success');
+        if ($anomalie->update($request->all())) {
+            return redirect(route('anomalie.index'))->with('success', 'Materiel modifier avec success');
+        }
+        return redirect()->back()->withInput();
+
+        // $data = $request->validate([
+        //     'name' => 'required',
+        //     'datedebut' => 'required',
+        //     'materiel' => 'required',
+        //     // 'chauffeur' => 'required',
+        //     'commentaire' => 'nullable',
+        //     'file_path' => 'nullable',
+        //     'datefin' => 'nullable',
+        // ]);
+
+        // $anomalie->update($data);
+        // return redirect(route('anomalie.index'))->with('success', 'Anomalie modifier avec success');
     }
 
     public function delete(Anomalie $anomalie){

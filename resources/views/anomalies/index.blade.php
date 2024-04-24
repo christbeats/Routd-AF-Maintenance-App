@@ -34,8 +34,8 @@
                 <tr>
                     <td>{{$anomalie->name}}</td>
                     <td>{{$anomalie->datedebut}}</td>
-                    <td>{{$anomalie->materiel}}</td>
-                    <td>{{$anomalie->chauffeur}}</td>
+                    <td>{{$anomalie->material->numParc}}</td>
+                    <td>{{$anomalie->employee->name}}</td>
                     <td>{{$anomalie->commentaire}}</td>
                     <td>{{$anomalie->file_path}}</td>
                     <td>{{$anomalie->datefin}}</td>

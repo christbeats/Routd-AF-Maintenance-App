@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+@extends('layout')
+@section('main')
     <h1>Creer un employer</h1>
     <div>
         @if($errors->any())
@@ -21,25 +15,25 @@
     <form method="post" action="{{route('employee.store')}}">
         @csrf
         @method('post')
-        <div>
-        <label for="name">Nom:</label>
-            <input type="text" name="name" placeholder="name"/>
+
+        <div class="form-group">
+            <label for="name" >Nom:</label>
+            <input type="text" name="name" placeholder="name" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"/>
+        </div>
+        <div class="form-group">
+            <label for="surname">Prenom:</label>
+            <input type="text" name="surname" placeholder="surname" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"/>
+        </div>
+        <div class="form-group">
+            <label for="function">Fonction:</label>
+            <input type="text" name="function" placeholder="function" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"/>
+        </div>
+        <div class="form-group">
+            <label for="phone">Telephone:</label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"/>
         </div>
         <div>
-        <label for="surname">Prenom:</label>
-            <input type="text" name="surname" placeholder="surname"/>
-        </div>
-        <div>
-        <label for="function">Fonction:</label>
-            <input type="text" name="function" placeholder="function"/>
-        </div>
-        <div>
-        <label for="phone">Telephone:</label>
-        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number"/>
-        </div>
-        <div>
-            <input type="submit" value="Enregistrer"/>
+            <input type="submit" class="btn btn-info" value="Enregistrer"/>
         </div>
     </form>
-</body>
-</html>
+@endsection

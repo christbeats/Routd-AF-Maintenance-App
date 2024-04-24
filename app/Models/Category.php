@@ -9,13 +9,16 @@ class Category extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'name',
-    ];
+    protected $guarded = [];
 
     public function materials()
     {
         return $this->hasMany(Material::class);
+    }
+
+    public function pieces()
+    {
+        return $this->hasMany(Piece::class);
     }
 
 }

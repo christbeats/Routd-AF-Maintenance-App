@@ -9,10 +9,10 @@ class Piece extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'system',
-        'sousorgane',
-        'element',
-        
-    ];
+    protected $guarded = [];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

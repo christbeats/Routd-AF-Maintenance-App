@@ -30,12 +30,20 @@
             <input type="date" name="datedebut" placeholder="datedebut" value="{{$anomalie->datedebut}}"/>
         </div>
         <div>
-            <label for="materiel">Materiel:</label>
-            <input type="text" name="materiel" placeholder="materiel" value="{{$anomalie->materiel}}"/>
+            <label for="material_id">Materiel:</label>
+            <select name="material_id" id="material_id">
+                @foreach($materials as $material)
+                    <option value="{{ $material->id }}">{{ $material->name }}</option>
+                @endforeach
+            </select>
         </div>
         <div>
-            <label for="chauffeur">Chauffeur:</label>
-            <input type="text" name="chauffeur" placeholder="chauffeur" value="{{$anomalie->chauffeur}}"/>
+            <label for="employee_id">Chauffeur:</label>
+                <select name="employee_id" id="employee_id">
+                    @foreach($employees as $employee)
+                        <option value="{{ $employee->id }}">{{ $employee->name }}</option>
+                    @endforeach
+                </select>
         </div>
         <div>
             <label for="commentaire">Commentaire:</label>

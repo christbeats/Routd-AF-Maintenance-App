@@ -9,12 +9,7 @@ class Employee extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'name',
-        'surname',
-        'function',
-        'phone',
-    ];
+    protected $guarded = [];
 
     public function materials()
     {

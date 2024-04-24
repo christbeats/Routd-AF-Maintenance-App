@@ -9,17 +9,7 @@ class Anomalie extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'name',
-        'datedebut',
-        'materiel',
-        // 'chauffeur',
-        'compteurKilometrique',
-        'compteurHoraire',
-        'commentaire',
-        'file_path',
-        'datefin',
-    ];
+    protected $guarded = [];
 
     public function material()
     {
