@@ -21,10 +21,27 @@
     <form method="post" action="{{route('diagnostic.update', ['diagnostic' => $diagnostic])}}">
         @csrf
         @method('put')
-        <div>
-            <label for="intervenant">Intervenant:</label>
-                <input type="text" name="intervenant" placeholder="intervenant" value="{{$diagnostic->intervenant}}"/>
+            <div>
+                <label for="anomalie_id">Category:</label>
+                <select name="anomalie_id" id="anomalie_id">
+                    @foreach($anomalies as $anomalie)
+                        <option value="{{ $anomalie->id }}">{{ $anomalie->name }}</option>
+                    @endforeach
+                </select>
             </div>
+            <div>
+                <label for="employee_id">Intervenant:</label>
+                <select name="employee_id" id="employee_id">
+                    @foreach($employees as $employee)
+                        <option value="{{ $employee->id }}">{{ $employee->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div>
+                <label for="datedebut">Date Debut:</label>
+                <input type="date" name="datedebut" placeholder="datedebut" value="{{$diagnostic->datedebut}}"/>
+            </div>
+
             <div>
                 <label for="commentaire">Commentaire:</label>
                 <textarea name="commentaire" id="commentaire" rows="5" placeholder="Commentaire" value="{{$diagnostic->commentaire}}"></textarea>
@@ -40,9 +57,9 @@
                 <label for="file_path">Pièce Joint:</label>
                 <input type="file" name="file_path" placeholder="file_path" value="{{$diagnostic->file_path}}"/>
             </div>
-        <div>
-            <input type="submit" value="Modifier"/>
-        </div>
+            <div>
+                <input type="submit" value="Modifier"/>
+            </div>
     </form>
 </body>
 </html>

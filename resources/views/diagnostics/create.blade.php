@@ -22,8 +22,24 @@
         @csrf
         @method('post')
         <div>
-        <label for="intervenant">Intervenant:</label>
-            <input type="text" name="intervenant" placeholder="intervenant"/>
+            <label for="anomalie_id">Anomalies:</label>
+            <select name="anomalie_id" id="anomalie_id">
+                @foreach($anomalies as $anomalie)
+                    <option value="{{ $anomalie->id }}">{{ $anomalie->name }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div>
+            <label for="employee_id">Intervenant:</label>
+            <select name="employee_id" id="employee_id">
+                @foreach($employees as $employee)
+                    <option value="{{ $employee->id }}">{{ $employee->name }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div>
+            <label for="datedebut">Date Debut:</label>
+            <input type="date" name="datedebut" placeholder="datedebut"/>
         </div>
         <div>
             <label for="commentaire">Commentaire:</label>

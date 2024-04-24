@@ -20,4 +20,9 @@ class Employee extends Model
     {
         return $this->hasMany(Anomalie::class);
     }
+
+    public function diagnostic()
+    {
+        return $this->belongsTo(Diagnostic::class);
+    }
 }

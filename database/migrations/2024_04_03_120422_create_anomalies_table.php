@@ -26,8 +26,8 @@ return new class extends Migration
             $table->string('datefin')->nullable();
             $table->timestamps();
 
-            $table->foreignIdFor(Material::class);
-            $table->foreignIdFor(Employee::class);
+            $table->foreignIdFor(Material::class)->nullable();
+            $table->foreignIdFor(Employee::class)->nullable();
         });
     }
 

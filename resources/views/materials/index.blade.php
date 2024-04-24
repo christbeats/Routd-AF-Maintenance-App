@@ -38,7 +38,7 @@
                     <td>{{$material->immatriculation}}</td>
                     <td>{{$material->dateAquisition}}</td>
                     <td>{{$material->etatAquisition}}</td>
-                    <td>{{$material->employee->name}}</td>
+                    <td>{{$material->employee->name ?? null}}</td>
                     <td>
                         <a href="{{route('material.edit', ['material' => $material])}}">Edit</a>
                     </td>

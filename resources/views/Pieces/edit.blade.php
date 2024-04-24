@@ -22,6 +22,14 @@
         @csrf
         @method('put')
         <div>
+            <label for="category_id">Category:</label>
+        <select name="category_id" id="category_id">
+            @foreach($categories as $category)
+                <option value="{{ $category->id }}">{{ $category->name }}</option>
+            @endforeach
+        </select>
+        </div>
+        <div>
         <label for="system">Nom:</label>
             <input type="text" name="system" placeholder="system" value="{{$piece->system}}"/>
         </div>

@@ -21,6 +21,7 @@
         <table border="1">
             <tr>
                 <th>ID</th>
+                <th>Category</th>
                 <th>system</th>
                 <th>sousorgane</th>
                 <th>element</th>
@@ -30,6 +31,7 @@
             @foreach($pieces as $piece)
                 <tr>
                     <td>{{$piece->id}}</td>
+                    <td>{{$piece->category->name ?? null}}</td>
                     <td>{{$piece->system}}</td>
                     <td>{{$piece->sousorgane}}</td>
                     <td>{{$piece->element}}</td>

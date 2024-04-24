@@ -25,15 +25,7 @@ class AnomalieController extends Controller
 
     public function store(Request $request){
         // dd($request);
-        $data = $request->validate([
-            'name' => 'required',
-            'datedebut' => 'required',
-            // 'materiel' => 'required',
-            // 'chauffeur' => 'required',
-            'commentaire' => 'nullable',
-            'file_path' => 'nullable',
-            'datefin' => 'nullable',
-        ]);
+        $data = $request->all();
 
         $newAnomalie = Anomalie::create($data);
 
@@ -41,7 +33,10 @@ class AnomalieController extends Controller
     }
 
     public function edit(Anomalie $anomalie){
-        return view('anomalies.edit', ['anomalie' => $anomalie]);
+        $employees = Employee::all();
+        $materials = Material::doesntHave('anomalie')->get();
+
+        return view('anomalies.edit', ['anomalie' => $anomalie], compact('materials', 'employees'));
     }
 
     public function update(Anomalie $anomalie, Request $request){

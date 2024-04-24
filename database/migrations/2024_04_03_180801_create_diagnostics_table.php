@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Anomalie;
+use App\Models\Diagnostic;
 use App\Models\Employee;
 use App\Models\Material;
 use Illuminate\Database\Migrations\Migration;
@@ -22,7 +23,8 @@ return new class extends Migration
             $table->string('file_path')->nullable();
             $table->timestamps();
 
-            $table->foreignIdFor(Anomalie::class);
+            $table->foreignIdFor(Anomalie::class)->nullable();
+            $table->foreignIdFor(Employee::class)->nullable();
 
         });
     }

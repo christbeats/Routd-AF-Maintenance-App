@@ -20,4 +20,9 @@ class Anomalie extends Model
     {
         return $this->belongsTo(Employee::class);
     }
+
+    public function diagnostic()
+    {
+        return $this->hasMany(Diagnostic::class);
+    }
 }

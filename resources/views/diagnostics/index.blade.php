@@ -20,6 +20,7 @@
         </div>
         <table border="1">
             <tr>
+                <th>Materiel</th>
                 <th>Intervenant</th>
                 <th>Commentaire</th>
                 <th>Situation</th>
@@ -29,7 +30,8 @@
             </tr>
             @foreach($diagnostics as $diagnostic)
                 <tr>
-                    <td>{{$diagnostic->intervenant}}</td>
+                    <td>{{$diagnostic->anomalie->name ?? null}}</td>
+                    <td>{{$diagnostic->employee->name ?? null}}</td>
                     <td>{{$diagnostic->commentaire}}</td>
                     <td>{{$diagnostic->situation}}</td>
                     <td>{{$diagnostic->file_path}}</td>

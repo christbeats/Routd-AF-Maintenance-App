@@ -33,7 +33,7 @@
             <label for="material_id">Materiel:</label>
             <select name="material_id" id="material_id">
                 @foreach($materials as $material)
-                    <option value="{{ $material->id }}">{{ $material->name }}</option>
+                    <option value="{{ $material->id }}">{{ $material->numParc }}</option>
                 @endforeach
             </select>
         </div>

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
 use App\Models\Employee;
 use App\Models\Material;
 use App\Models\User;
@@ -15,15 +16,23 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        Employee::factory(10)->create();
+        Material::factory(10)->create();
 
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        Category::factory()->create([
+            'name' => 'ENGIN',
+        ]);
+
+        Category::factory()->create([
+            'name' => 'CAMION',
+        ]);
+
+        Category::factory()->create([
+            'name' => 'VEHICULE LEGER',
+        ]);
 
         Employee::factory(10)->create()->each(function ($employee){
-            Material::factory(rand(1,4))->create([
+            Material::factory()->create([
                 'employee_id' => $employee->id,
             ]);
         });

@@ -11,7 +11,7 @@ class MaterialController extends Controller
 {
     public function index(){
         $materials = Material::with('employee', 'category')->get()->all();
-        return view('materials.index', ['materials' => $materials], compact('materials',));
+        return view('materials.index', ['materials' => $materials], compact('materials'));
 
     }
 
@@ -24,16 +24,7 @@ class MaterialController extends Controller
     }
 
     public function store(Request $request){
-        $data = $request->validate([
-            'numParc' => 'required',
-            // 'type' => 'required',
-            'marque' => 'nullable',
-            'modele' => 'nullable',
-            'immatriculation' => 'required',
-            'numChassis' => 'nullable',
-            'dateAquisition' => 'required',
-            'etatAquisition' => 'required',
-        ]);
+        $data = $request->all();
 
         $newMaterial = Material::create($data);
 
